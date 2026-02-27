@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "twistoptics"
+version = "0.1.0"
+description = "Neural-network assisted IFC modeling for twisted multilayers"
+readme = "README.md"
+requires-python = ">=3.8,<3.11"
+
+dependencies = []
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

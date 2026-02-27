@@ -1,0 +1,47 @@
+paths:
+  database: ../data/database_MoO3_bilayers
+  trained_models: ../data/Models_Trained_bilayers_w_fixed
+  seed_file: ../SEED_LIST.csv
+
+system:
+  bilayer: true
+  eps_superstrate: 1.0
+  materials: [MoO3, MoO3, MoO3]
+  substrate: SiO2
+
+data_generation:
+  n_data: 25000
+  freq_init: 630
+  freq_final: 680
+  d_min: 50
+  d_max: 300
+  n_mesh: 1000
+  params_opt_max: [1000, 2.0, 50, 50]
+  plot_ifc_enabled: false
+  output_dir: ../data/database_MoO3_bilayers
+
+training:
+  directory: ../data/Models_Trained_bilayers_w_fixed
+  database: ../data/database_MoO3_bilayers
+  ntrain: 20000
+  nvalidation: 5000
+  # Bilayers: [θ1, t1, t2, w]
+  # Trilayers: [θ1, θ2, t1, t2, t3, w]
+  positions: [1, 1, 1, 0]
+  max_nbranches: 10
+  min_branch: 1
+  #Parameters if you wish to continue a previous training session 
+  resume_training: false
+  resume_nbranches: 2 # Number of the branch from which you want to continue training.
+
+inference:
+  model_dir: ../data/Models_Trained_bilayers_w_fixed
+  database: ../data/database_MoO3_bilayers
+  num_seed: 0
+  nbranches: 1
+  # Bilayers: [θ1, t1, t2, w]
+  # Trilayers: [θ1, θ2, t1, t2, t3, w]
+  positions: [1, 1, 1, 0]
+  input2: 660
+  N_IFCs: 10
+  N_best_predictions: 1
